@@ -2,15 +2,20 @@ import React, { useState } from 'react';
 import { FormStyle } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContactThunk } from 'Redux/operations';
-import { nanoid } from '@reduxjs/toolkit';
+import ContactList from '../ContactList/ContactList';
+import Filter from '../Filter/Filter';
+
+
+
 
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contacts.items);
+  const contacts = useSelector((state) => state.contacts.contacts.items);
   
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+ 
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -29,8 +34,8 @@ const ContactForm = () => {
     setNumber('');
     return;
     }
-    
-   dispatch(addContactThunk({ name, number, id:nanoid() }));
+   
+    dispatch(addContactThunk({ name, number}));
 
     setName('');
     setNumber('');
@@ -64,6 +69,8 @@ const ContactForm = () => {
         />
       </FormStyle.Label>
       <FormStyle.SubmitButton type="submit">Add Contact</FormStyle.SubmitButton>
+        <ContactList />
+      <Filter />
     </FormStyle.Form>
   );
 };

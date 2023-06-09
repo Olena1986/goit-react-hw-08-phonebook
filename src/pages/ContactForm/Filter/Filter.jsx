@@ -1,13 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { FilterStyle } from './Filter.styled';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateFilter } from 'Redux/contactsSlice.js';
+import { fetchContactsThunk } from 'Redux/operations';
 
-const Filter = ({ value }) => {
+const Filter = () => {
   const dispatch = useDispatch();
+  const filter = useSelector(state => state.filter);
 
-  const handleChange = (e) => {
+  useEffect(() => {
+    dispatch(fetchContactsThunk());
+  }, [dispatch]);
+
+  const handleFilterChange = (e) => {
     dispatch(updateFilter(e.target.value));
   };
 
@@ -17,15 +22,13 @@ const Filter = ({ value }) => {
       <FilterStyle.FilterInput
         type="text"
         placeholder="Search"
-        value={value}
-        onChange={handleChange}
+        value={filter}
+        onChange={handleFilterChange}
       />
     </FilterStyle.FilterSubtitle>
   );
 };
 
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-};
 
 export default Filter;
+
