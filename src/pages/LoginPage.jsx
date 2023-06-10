@@ -14,9 +14,9 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { loginThunk } from 'Redux/Auth/operations';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Link as RouterLink } from 'react-router-dom';
+import { Navigate, Link as RouterLink, useLocation } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 function Copyright(props) {
@@ -41,7 +41,9 @@ const LinkSignUp = React.forwardRef((props, ref) => (
 
 export default function LoginPage() {
  const dispatch = useDispatch()
-	const navigate = useNavigate()
+ const location = useLocation()
+
+  
 	const handleSubmit = e => {
 		e.preventDefault()
 		const form = e.target
@@ -52,9 +54,14 @@ export default function LoginPage() {
 			password,
 		}
 
-		dispatch(loginThunk(credentials)).then(() => navigate('/contacts'))
+		dispatch(loginThunk(credentials))
+			.unwrap()
+			.then(() => {
+				Navigate(location.state?.from ?? '/')
+				toast.success('Wellcome back')
+			})
+			.catch(() => toast.error('Try again'))
 
-		form.reset()
 	}
 
 

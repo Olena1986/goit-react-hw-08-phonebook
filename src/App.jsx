@@ -1,7 +1,6 @@
 
 import { Route, Routes } from 'react-router-dom/dist';
 import { Layout } from 'components/Layout';
-import ContactForm from 'pages/ContactForm/ContactForm/ContactForm';
 import  LoginPage  from 'pages/LoginPage';
 import SignUp from 'pages/RegistrationPage';
 import { PrivateRoute } from 'hok/PrivateRoute';
@@ -11,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshThunk } from 'Redux/Auth/operations';
  import { toast } from 'react-toastify';
+import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
 
 function App() {
 	const dispatch = useDispatch()
@@ -26,7 +26,7 @@ function App() {
 				<Route index element={<Home />} />
 				<Route path='login' element={<PublicRoute><LoginPage /></PublicRoute>} />
                 <Route path='registration' element={ <PublicRoute><SignUp /></PublicRoute>}/>
-                <Route path='contacts' element={ <PrivateRoute><ContactForm /></PrivateRoute>}/>
+                <Route path='contacts' element={ <PrivateRoute><ContactsPage/></PrivateRoute>}/>
 				</Route>
 			</Routes>
 		</> 

@@ -12,7 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch } from 'react-redux';
 import { registrationThunk } from 'Redux/Auth/operations';
-import { useNavigate } from 'react-router-dom';
+
 
 
 
@@ -35,7 +35,7 @@ const defaultTheme = createTheme();
 
 
 export default function SignUp() {
-const navigate = useNavigate();
+
 const dispatch = useDispatch()
 	const handleSubmit = e => {
 		e.preventDefault()
@@ -49,10 +49,8 @@ const dispatch = useDispatch()
 				email,
 				password,
 			})
-		).then(() => {
-      navigate('/contacts'); 
-    });
-	}
+		);
+	};
 
   return (
     <ThemeProvider theme={defaultTheme}>

@@ -4,9 +4,9 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export const PublicRoute = ({ children }) => {
-	const isLoggedIn = useSelector(tokenSelector)
-	if (isLoggedIn) {
-		return <Navigate to='/' />
+	const isAuth = useSelector(tokenSelector)
+	if (isAuth) {
+		return <Navigate to='/contacts' />
 	}
 	return children
 }

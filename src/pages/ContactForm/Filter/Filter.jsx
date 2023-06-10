@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { FilterStyle } from './Filter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateFilter } from 'Redux/contactsSlice.js';
-import { fetchContactsThunk } from 'Redux/operations';
+import { updateFilter } from 'Redux/Contacts/contactsSlice.js';
+import { fetchContactsThunk } from 'Redux/Contacts/operations';
 
 const Filter = () => {
   const dispatch = useDispatch();
