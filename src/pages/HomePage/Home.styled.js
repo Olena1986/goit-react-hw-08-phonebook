@@ -5,6 +5,7 @@ const Title = styled.h1`
   justify-content:center;
   align-items: center;
   color: blue;
+  height: 100vh;
 `;
 const Container = styled.div`
   background-image: url(${phonebookImage});

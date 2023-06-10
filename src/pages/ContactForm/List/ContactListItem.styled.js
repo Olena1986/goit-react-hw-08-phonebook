@@ -9,17 +9,18 @@ const Item = styled.li`
 const Button = styled.button`
   padding: 5px 10px;
   margin-left: 10px;
-  background-color: grey;
-  color: black;
+  background-color: lightblue;
+  color: grey;
   border: none;
   border-radius: 4px;
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease;
 
   &:hover {
     background-color: #0056b3;
+    color:grey;
   }
 `;
 

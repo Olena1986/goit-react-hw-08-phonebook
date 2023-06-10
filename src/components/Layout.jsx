@@ -7,7 +7,7 @@ export const Layout = () => {
 	return (
 		<>
 			<NavBar />
-			<main className='text-xl font-normal '>
+			<main>
 				<Outlet />
 			</main>
 		</>

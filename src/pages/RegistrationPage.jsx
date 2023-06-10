@@ -74,7 +74,7 @@ const dispatch = useDispatch()
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} >
                 <TextField
                   autoComplete="given-name"
                   name="name"
@@ -103,7 +103,6 @@ const dispatch = useDispatch()
                   label="Password"
                   type="password"
                   id="password"
-                
                 />
               </Grid>
               
@@ -116,13 +115,6 @@ const dispatch = useDispatch()
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />

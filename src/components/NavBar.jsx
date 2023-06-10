@@ -46,8 +46,8 @@ export default function BasicMenu() {
         <MenuItem onClick={()=>{navigate('/')}}>Home</MenuItem>
         {isAuthLog ?
           <div>
+          <MenuItem >{`Welcome ${userEmail}`}</MenuItem>
           <MenuItem onClick={() => dispatch(logoutThunk())} >Logout</MenuItem>
-            <MenuItem >{`Welcome ${userEmail}`}</MenuItem>
           </div>
           : <MenuItem onClick={() => { navigate('/login') }}>Login</MenuItem>}
       </Menu>

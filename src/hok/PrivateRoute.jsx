@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux';
 import { tokenSelector } from 'Redux/Auth/authSelectors.js';
 import { Navigate, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 export const PrivateRoute = ({ children }) => {
 	const isLoggedIn = useSelector(tokenSelector)
@@ -10,3 +12,7 @@ export const PrivateRoute = ({ children }) => {
 	}
 	return children
 }
+
+PrivateRoute.propTypes = {
+	children: PropTypes.node.isRequired,
+};
